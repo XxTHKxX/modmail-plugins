@@ -24,7 +24,8 @@ class ClaimThread(commands.Cog):
         thread = await self.db.find_one({'thread_id': str(ctx.thread.channel.id)})
         if thread is None:
             await self.db.insert_one({'thread_id': str(ctx.thread.channel.id), 'claimers': [str(ctx.author.id)]})
-            await ctx.send(f'This ticket has now been claimed by {ctx.author.name}. Please do not talk within this ticket unless necessary')
+            embed = discord.Embed(title='Thread Claimed', description=f'This ticket has now been claimed by {ctx.author.mention}. Please do not talk within this ticket unless necessary', color=discord.Color.green())
+            await ctx.send(embed=embed)
         else:
             await ctx.send('Thread is already claimed')
 
