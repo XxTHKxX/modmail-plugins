@@ -27,7 +27,7 @@ class ClaimThread(commands.Cog):
             embed = discord.Embed(title='Thread Claimed', description=f'This ticket has now been claimed by {ctx.author.mention}. Please do not talk within this ticket unless necessary', color=discord.Color.green())
             await ctx.send(embed=embed)
 
-            category = self.bot.get_category(1209898942473707591)
+            category = self.bot.get_channel(1209898942473707591)
             await ctx.channel.edit(category=category)
 
         else:
